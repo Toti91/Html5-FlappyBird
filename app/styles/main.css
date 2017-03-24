@@ -7,6 +7,15 @@
 	background: blue;
 }
 
+.Pipes{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5em;
+	height: 10em;
+	background: green;
+}
+
 .Scoreboard {
 	position: absolute;
 	left: 50%;

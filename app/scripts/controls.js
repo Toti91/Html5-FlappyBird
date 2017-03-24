@@ -7,10 +7,7 @@ window.Controls = (function() {
      */
     var KEYS = {
         32: 'space',
-        37: 'left',
         38: 'up',
-        39: 'right',
-        40: 'down'
     };
 
     /**
@@ -21,6 +18,7 @@ window.Controls = (function() {
      */
     var Controls = function() {
         this._didJump = false;
+        this.flag = false;
         this.keys = {};
         $(window)
             .on('keydown', this._onKeyDown.bind(this))
@@ -34,7 +32,8 @@ window.Controls = (function() {
         }
 
         // Remember that this button is down.
-        if (e.keyCode in KEYS) {
+        if (e.keyCode in KEYS && !this.flag) {
+            this.flag = true;
             var keyName = KEYS[e.keyCode];
             this.keys[keyName] = true;
             return false;
@@ -43,6 +42,7 @@ window.Controls = (function() {
 
     Controls.prototype._onKeyUp = function(e) {
         if (e.keyCode in KEYS) {
+            this.flag = false;
             var keyName = KEYS[e.keyCode];
             this.keys[keyName] = false;
             return false;
