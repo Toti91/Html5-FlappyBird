@@ -5,6 +5,7 @@
 	width: 5em;
 	height: 5em;
 	background: blue;
+	z-index: 10;
 }
 
 .Pipes{
@@ -27,6 +28,7 @@
 	box-sizing: border-box;
 	background: purple;
 	text-align: center;
+	z-index: 100;
 	-webkit-transform: translate(0, -40em);
 	-webkit-transition: -webkit-transform 0.5s;
 }

@@ -17,6 +17,7 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
+		this.div = document.getElementsByClassName('Player')[0];
 	};
 
 	/**
@@ -36,8 +37,6 @@ window.Player = (function() {
 
 		GRAVITY -= ((Math.random() * -10) - 5) / 500;
 		this.pos.y += GRAVITY; 
-
-
 		this.checkCollisionWithBounds();
 
 		// Update UI

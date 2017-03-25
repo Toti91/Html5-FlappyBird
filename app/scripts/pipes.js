@@ -4,7 +4,7 @@ window.Pipes = (function(el, game) {
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
 	var SPEED = 25; // * 10 pixels per second
-	var WIDTH = 5;
+	var WIDTH = 10;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
@@ -30,9 +30,9 @@ window.Pipes = (function(el, game) {
 		lowerPipe.className = 'lPipe';
 		
 		upperPipe.style.height = this.pos.y / 2 + 'em';
-		upperPipe.style.width = 10 + 'em';
+		upperPipe.style.width = WIDTH + 'em';
 		lowerPipe.style.height = this.pos.y / 2 + 'em';
-		lowerPipe.style.width = 10 + 'em';
+		lowerPipe.style.width = WIDTH + 'em';
 
 		upperPipe.style.backgroundColor = 'green';
 		lowerPipe.style.backgroundColor = 'green';
@@ -40,7 +40,6 @@ window.Pipes = (function(el, game) {
 		this.div.appendChild(upperPipe);
 		this.div.appendChild(lowerPipe);
 
-		//var ground = this.pos.y / 2;
 		upperPipe.style.transform = 'translate('+ this.game.WORLD_WIDTH + 'em'+', 0)';
 		lowerPipe.style.transform = 'translate('+ this.game.WORLD_WIDTH + 'em' +', '+ this.pos.y / 2 +'em)';
 
@@ -66,26 +65,38 @@ window.Pipes = (function(el, game) {
 	};
  
 	Pipes.prototype.onFrame = function(delta, frames) {
-		if(frames % 150 === 0) {
+		this.checkCollisionWithBounds();
+		
+		if (frames % 150 === 0) {
 			this.spawnPipes();
 		}
 
-		for(var i = 0; i < this._pipes.length; i++){
+		for (var i = 0; i < this._pipes.length; i++) {
 			var p = this._pipes[i];
 			p.x -= SPEED * delta;
 			p.el.style.transform = 'translateZ(0) translate('+ p.x + 'em' +', '+ p.y +'em)';  
 		}
-		
-		// Update UI
-		//this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
 	};
 
 	Pipes.prototype.checkCollisionWithBounds = function() {
-		if (this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
-			return this.game.gameover();
-		}
-		else if (this.pos.y < 0){
-			this.pos.y = 0;
+		for(var i = 0; i < this._pipes.length; i++){
+			var p = this._pipes[i];
+			var cx  = Math.min(Math.max(this.game.player.pos.x, p.x), p.x+WIDTH);
+			var cy1 = Math.min(Math.max(this.game.player.pos.y, p.y), p.y+(this.pos.y / 2));
+			var cy2 = Math.min(Math.max(this.game.player.pos.y, p.y+(this.pos.y / 2)+80), p.y+2*(this.pos.y / 2)+80);
+			// closest difference 
+			var dx  = this.game.player.pos.x - cx;
+			var dy1 = this.game.player.pos.y - cy1;
+			var dy2 = this.game.player.pos.y - cy2;
+			// vector length
+			var d1 = dx*dx + dy1*dy1;
+			var d2 = dx*dx + dy2*dy2;
+			var rad = Math.sqrt(this.game.player.HEIGHT^2 + this.game.player.WIDTH^2) / 2
+			var r = rad*rad;
+			// determine intersection
+			if (r > d1 || r > d2) {
+				return this.game.gameover();
+			}
 		}
 	};
 
