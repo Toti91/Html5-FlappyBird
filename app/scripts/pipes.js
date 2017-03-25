@@ -1,0 +1,94 @@
+window.Pipes = (function(el, game) {
+	'use strict';
+
+	// All these constants are in em's, multiply by 10 pixels
+	// for 1024x576px canvas.
+	var SPEED = 25; // * 10 pixels per second
+	var WIDTH = 5;
+	var HEIGHT = 5;
+	var INITIAL_POSITION_X = 30;
+	var INITIAL_POSITION_Y = 25;
+
+	var Pipes = function(el, game) {
+		this.el = el;
+		this.game = game;
+		this.pos = { x: this.game.WORLD_WIDTH, y: this.game.WORLD_HEIGHT };
+		this.div = document.getElementsByClassName('Pipes')[0];
+		this._pipes = [];
+	};
+
+	function getRandomInt(min, max) {
+    	return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+	Pipes.prototype.spawnPipes = function() {
+		var upperPipe = document.createElement('div');
+		var lowerPipe = document.createElement('div');
+		var rand = getRandomInt(5, 10);
+
+		upperPipe.className = 'uPipe';
+		lowerPipe.className = 'lPipe';
+		
+		upperPipe.style.height = this.pos.y / 2 + 'em';
+		upperPipe.style.width = 10 + 'em';
+		lowerPipe.style.height = this.pos.y / 2 + 'em';
+		lowerPipe.style.width = 10 + 'em';
+
+		upperPipe.style.backgroundColor = 'green';
+		lowerPipe.style.backgroundColor = 'green';
+
+		this.div.appendChild(upperPipe);
+		this.div.appendChild(lowerPipe);
+
+		//var ground = this.pos.y / 2;
+		upperPipe.style.transform = 'translate('+ this.game.WORLD_WIDTH + 'em'+', 0)';
+		lowerPipe.style.transform = 'translate('+ this.game.WORLD_WIDTH + 'em' +', '+ this.pos.y / 2 +'em)';
+
+		var uPip = {
+			el: upperPipe,
+			x: this.pos.x,
+			y: 0 - rand
+		};
+		var lPip = {
+			el: lowerPipe,
+			x: this.pos.x,
+			y: this.pos.y / 2 + rand
+		};
+
+		this._pipes.push(uPip);
+		this._pipes.push(lPip);
+	};
+
+	Pipes.prototype.reset = function() {
+		this._pipes = [];
+		this.div.innerHTML = "";
+		this.pos.x = this.game.WORLD_WIDTH;
+	};
+ 
+	Pipes.prototype.onFrame = function(delta, frames) {
+		if(frames % 150 === 0) {
+			this.spawnPipes();
+		}
+
+		for(var i = 0; i < this._pipes.length; i++){
+			var p = this._pipes[i];
+			p.x -= SPEED * delta;
+			p.el.style.transform = 'translateZ(0) translate('+ p.x + 'em' +', '+ p.y +'em)';  
+		}
+		
+		// Update UI
+		//this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+	};
+
+	Pipes.prototype.checkCollisionWithBounds = function() {
+		if (this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+			return this.game.gameover();
+		}
+		else if (this.pos.y < 0){
+			this.pos.y = 0;
+		}
+	};
+
+	return Pipes;
+
+})();

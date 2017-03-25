@@ -8,12 +8,13 @@
 }
 
 .Pipes{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 5em;
-	height: 10em;
-	background: green;
+	position: relative;
+	width: 102.4em;
+	height: 57.6em;
+}
+
+.uPipe, .lPipe{
+	position: absolute;		
 }
 
 .Scoreboard {

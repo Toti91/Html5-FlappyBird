@@ -25,18 +25,17 @@ window.Player = (function() {
 	Player.prototype.reset = function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
+		GRAVITY = 0.25;
 	};
 
-	Player.prototype.jump = function(delta) {
-		this.pos.y -= JUMP;
-	}
-
-	Player.prototype.onFrame = function(delta) {
-		if (Controls.keys.up || Controls.keys.space) {
-			this.jump();
+	Player.prototype.onFrame = function(delta, frames) {
+		if (Controls.keys.up  || Controls.keys.space) {
+			this.pos.y -= JUMP;
+			GRAVITY = 0.25;
 		}
 
-		this.pos.y += GRAVITY;
+		GRAVITY -= ((Math.random() * -10) - 5) / 500;
+		this.pos.y += GRAVITY; 
 
 
 		this.checkCollisionWithBounds();
