@@ -23,6 +23,10 @@ window.Game = (function() {
 
 		el.css('fontSize', fontSize + 'px');
 
+		document.getElementsByClassName('Mute')[0].addEventListener('click', function() {
+            Sounds.muteAll();   
+        }, false);
+
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 	};

@@ -42,20 +42,33 @@
 .uPipe, .lPipe{
 	position: absolute;	
 	background-image: url('../images/Pipe.png');
-	background-size: 10em 28.8em;	
+	background-size: cover;	
 	z-index: 5;
 	border-radius: 1em;
 }
 
 .CurrentScore {
-	position: relative;
+	position: absolute;
 	font-family: 'Comic Sans MS', serif;
 	font-size: 3.6em;
 	color: white;
 	text-align: center;
 	margin: 0 auto;
-	width: 10em;
+	width: 100%;
 	z-index: 50;
+}
+
+.Mute {
+	position: absolute;
+	font-family: 'Comic Sans MS', serif;
+	color: white;
+	margin: 0.5em 0.5em;
+	font-size: 1em;
+	padding: 0.3em 0.5em;
+	border: 0.2em solid white;
+	background: none;
+	z-index: 90;
+	cursor: pointer;
 }
 
 .Scoreboard {

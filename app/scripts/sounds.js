@@ -33,6 +33,19 @@ window.Sounds = (function() {
     Sounds.prototype.crashSound = function() {
         this.s_crash.play();
     }
+
+    Sounds.prototype.muteAll = function() {
+        if(!this.s_song.muted){
+            this.s_song.muted = true;
+            this.s_jump.muted = true;
+            this.s_crash.muted = true;
+        }
+        else{
+            this.s_song.muted = false;
+            this.s_jump.muted = false;
+            this.s_crash.muted = false;
+        }
+    }
     
     // Export singleton.
     return new Sounds();
