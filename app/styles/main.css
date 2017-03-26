@@ -84,6 +84,7 @@
 	background-repeat: repeat-x;
 	background-size: contain v;
 	animation: groundScroll 5s linear infinite;
+	z-index: 11;
 }
 
 @keyframes groundScroll {
