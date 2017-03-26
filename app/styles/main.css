@@ -8,6 +8,7 @@
 	background-size: 5em 5em;
 	z-index: 10;
 	border-radius: 15%;
+	margin-left: -5em;     
 }
 
 .Player-wings {
