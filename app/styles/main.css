@@ -4,6 +4,7 @@
 	left: 0;
 	width: 5em;
 	height: 5em;
+	min-width: 5em;
 	background-image: url('../images/Guy.png');
 	background-size: 5em 5em;
 	z-index: 10;
@@ -69,6 +70,29 @@
 	background: none;
 	z-index: 90;
 	cursor: pointer;
+}
+
+.Ground {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 1em;
+	width: 102.4em;
+	background-image: url('../images/Ground.png');
+	background-repeat: repeat-x;
+	background-size: contain v;
+	animation: groundScroll 5s linear infinite;
+}
+
+@keyframes groundScroll {
+	from{
+		transform: translateZ(0);
+		background-position-x: 0;
+	}
+	to{
+		transform: translateZ(0);
+		background-position-x: -45em;
+	}
 }
 
 .Scoreboard {
@@ -139,6 +163,18 @@ body {
 	background: #7ec0ee;
 	background-image: url('../images/City.png');
 	background-repeat: repeat-x;
+	background-size: 45em 16em;
 	background-position: bottom;
-	background-size: 45em 16em
+	animation: backgroundScroll 20s linear infinite;
+}
+
+@keyframes backgroundScroll {
+	from{
+		transform: translateZ(0);
+		background-position: 0 41.6em;
+	}
+	to{
+		transform: translateZ(0);
+		background-position: -45em 41.6em;
+	}
 }

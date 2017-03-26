@@ -20,10 +20,12 @@ window.Controls = (function() {
         this._didJump = false;
         this.flag = false;
         this.keys = {};
-        $(window)
-            .on('keydown', this._onKeyDown.bind(this))
-            .on('keyup', this._onKeyUp.bind(this));
+        $(window).on('click', this._onClick.bind(this));
     };
+
+    Controls.prototype._onClick = function (e) {
+        this._didJump = true;
+    }
 
     Controls.prototype._onKeyDown = function(e) {
         // Only jump if space wasn't pressed.

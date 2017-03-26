@@ -8,7 +8,7 @@ window.Player = (function() {
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
 	var GRAVITY = 0.25;
-	var JUMP = 1.6;
+	var JUMP = 4.6;
 	var WIDTH = 5;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
@@ -31,13 +31,14 @@ window.Player = (function() {
 	};
 
 	Player.prototype.onFrame = function(delta) {
-		if (Controls.keys.up  || Controls.keys.space) {
+		if (Controls._didJump) {
 			this.pos.y -= JUMP;
+			Controls.didJump();
 			Sounds.jumpSound();
 			GRAVITY = 0.25;
 		}
 
-		GRAVITY -= ((Math.random() * -10) - 5) / 250;
+		GRAVITY -= ((Math.random() * -10) - 5) / 500;
 		this.pos.y += GRAVITY;
 		this.checkCollisionWithBounds();
 
