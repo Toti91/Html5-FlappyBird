@@ -11,6 +11,7 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
+		this.score = new window.Score(this.el.find('.Player'), this.el.find('Pipes'), this);
 		this.isPlaying = false;
 		this.frame = 0;
 
@@ -43,7 +44,7 @@ window.Game = (function() {
 		// Update game entities.
 		this.player.onFrame(delta, this.frame);
 		this.pipes.onFrame(delta, this.frame);
-
+		//this.score.onFrame(delta, this.frame);
 		this.frame++;
 
 		// Request next frame.
@@ -68,6 +69,7 @@ window.Game = (function() {
 	Game.prototype.reset = function() {
 		this.player.reset();
 		this.pipes.reset();
+		
 		this.frame = 0;
 	};
 
@@ -94,7 +96,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.WORLD_WIDTH = 102.4;
 	Game.prototype.WORLD_HEIGHT = 57.6;
-
+	
 	return Game;
 })();
 

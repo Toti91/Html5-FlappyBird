@@ -15,6 +15,7 @@ window.Pipes = (function(el, game) {
 		this.pos = { x: this.game.WORLD_WIDTH, y: this.game.WORLD_HEIGHT };
 		this.div = document.getElementsByClassName('Pipes')[0];
 		this._pipes = [];
+		
 	};
 
 	function getRandomInt(min, max) {
@@ -56,6 +57,7 @@ window.Pipes = (function(el, game) {
 
 		this._pipes.push(uPip);
 		this._pipes.push(lPip);
+		
 	};
 
 	Pipes.prototype.reset = function() {
@@ -69,6 +71,7 @@ window.Pipes = (function(el, game) {
 		
 		if (frames % 150 === 0) {
 			this.spawnPipes();
+			
 		}
 
 		for (var i = 0; i < this._pipes.length; i++) {
@@ -97,6 +100,7 @@ window.Pipes = (function(el, game) {
 			if (r > d1 || r > d2) {
 				return this.game.gameover();
 			}
+			
 		}
 	};
 
