@@ -9,7 +9,6 @@ window.Player = (function() {
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
 	var GRAVITY = 0.25;
-	var JUMP = 4.6;
 	var WIDTH = 5;
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 30;
@@ -33,10 +32,9 @@ window.Player = (function() {
 
 	Player.prototype.onFrame = function(delta) {
 		if (Controls._didJump) {
-			this.pos.y -= JUMP;
 			Controls.didJump();
 			Sounds.jumpSound();
-			GRAVITY = 0.25;
+			GRAVITY = -0.45;
 		}
 
 		GRAVITY -= ((Math.random() * -10) - 5) / 500;
