@@ -2,6 +2,8 @@
 window.Game = (function() {
 	'use strict';
 
+	var Sounds = window.Sounds;
+
 	/**
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
@@ -41,7 +43,7 @@ window.Game = (function() {
 		this.lastFrame = now;
 
 		// Update game entities.
-		this.player.onFrame(delta, this.frame);
+		this.player.onFrame(delta);
 		this.pipes.onFrame(delta, this.frame);
 
 		this.frame++;
@@ -60,6 +62,7 @@ window.Game = (function() {
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
+		Sounds.song();
 	};
 
 	/**
@@ -76,6 +79,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
+		Sounds.stopSong();
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;

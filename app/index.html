@@ -25,9 +25,13 @@
         <![endif]-->
 
         <div class="GameCanvas">
-            <div class="Player"></div>
+            <div class="CurrentScore">0</div>
+            <div class="Player">
+                <div class="Player-wings"></div>
+            </div>
             <div class="Pipes"></div>
             <div class="Scoreboard">
+                <div class="Score"></div>
                 <button class="Scoreboard-restart">
                     <span class="Scoreboard-restartText">Restart</span>
                 </button>
@@ -43,6 +47,7 @@
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
         <script src="scripts/controls.js"></script>
+        <script src="scripts/sounds.js"></script>
         <script src="scripts/game.js"></script>
         <script src="scripts/player.js"></script>
         <script src="scripts/pipes.js"></script>
