@@ -34,7 +34,7 @@ window.Score = (function(el, game) {
 	};
 
     return Score;
-});
+})();
 
 
 

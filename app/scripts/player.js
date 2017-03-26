@@ -2,7 +2,8 @@ window.Player = (function() {
 	'use strict';
 
 	var Controls = window.Controls;
-	
+
+	var Sounds = window.Sounds;
 
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
@@ -31,14 +32,15 @@ window.Player = (function() {
 		GRAVITY = 0.25;
 	};
 
-	Player.prototype.onFrame = function(delta, frames) {
+	Player.prototype.onFrame = function(delta) {
 		if (Controls.keys.up  || Controls.keys.space) {
 			this.pos.y -= JUMP;
+			Sounds.jumpSound();
 			GRAVITY = 0.25;
 		}
 
-		GRAVITY -= ((Math.random() * -10) - 5) / 500;
-		this.pos.y += GRAVITY; 
+		GRAVITY -= ((Math.random() * -10) - 5) / 250;
+		this.pos.y += GRAVITY;
 		this.checkCollisionWithBounds();
 
 		// Update UI
@@ -47,6 +49,8 @@ window.Player = (function() {
 
 	Player.prototype.checkCollisionWithBounds = function() {
 		if (this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+			document.getElementsByClassName('Score')[0].innerHTML = "Score: " + this.game.pipes.score;
+			Sounds.crashSound();
 			return this.game.gameover();
 		}
 		else if (this.pos.y < 0){
