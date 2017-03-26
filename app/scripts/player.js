@@ -2,6 +2,7 @@ window.Player = (function() {
 	'use strict';
 
 	var Controls = window.Controls;
+
 	var Sounds = window.Sounds;
 
 	// All these constants are in em's, multiply by 10 pixels

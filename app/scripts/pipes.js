@@ -19,6 +19,7 @@ window.Pipes = (function(el, game) {
 		this.scoreboard = document.getElementsByClassName('Score')[0];
 		this.currentscore = document.getElementsByClassName('CurrentScore')[0];
 		this._pipes = [];
+
 		this.score = 0;
 	};
 
@@ -59,6 +60,7 @@ window.Pipes = (function(el, game) {
 
 		this._pipes.push(uPip);
 		this._pipes.push(lPip);
+		
 	};
 
 	Pipes.prototype.reset = function() {
@@ -76,6 +78,7 @@ window.Pipes = (function(el, game) {
 		// spawn pipes every 150 frames
 		if (frames % 150 === 0) {
 			this.spawnPipes();
+			
 		}
 
 		// move pipes
@@ -121,6 +124,7 @@ window.Pipes = (function(el, game) {
 				Sounds.crashSound();
 				return this.game.gameover();
 			}
+			
 		}
 	};
 
