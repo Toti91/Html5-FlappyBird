@@ -92,7 +92,7 @@ window.Pipes = (function(el, game) {
 				p.passed = true;
 				this.score += 1;
 				this.currentscore.innerHTML = this.score;
-				console.log(this.score);
+				Sounds.goodSounds();
 			}
 
 			// remove pipe if its outside the world.
@@ -121,7 +121,8 @@ window.Pipes = (function(el, game) {
 			// determine intersection
 			if (r > d1 || r > d2) {
 				this.scoreboard.innerHTML = "Score: " + this.score;
-				Sounds.crashSound();
+				//Sounds.crashSound();
+				Sounds.damnCrashSound();
 				return this.game.gameover();
 			}
 			
