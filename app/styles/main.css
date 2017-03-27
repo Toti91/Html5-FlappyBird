@@ -77,13 +77,13 @@ button:focus {
 	margin: 0.5em 0.5em;
 	font-size: 1em;
 
-	/*padding: 0.3em 0.5em;*/
-	/*background: none;*/
-	/*z-index: 190;*/
+	padding: 0.3em 0.5em;
+	background: none;
+	
 
-	padding: 0.3em 1em;
+	/*padding: 0.3em 1em;
 	border: 0.2em solid white;
-	background: black;
+	background: black;*/
 	z-index: 300;
 
 	cursor: pointer;
