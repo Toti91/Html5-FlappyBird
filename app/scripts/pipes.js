@@ -88,7 +88,7 @@ window.Pipes = (function(el, game) {
 			p.el.style.transform = 'translateZ(0) translate('+ p.x + 'em' +', '+ p.y +'em)';
 
 			// calculate score
-			if(this.game.player.pos.x > p.x && p.el.className == 'uPipe' &&!p.passed){
+			if(this.game.player.pos.x > p.x + WIDTH && p.el.className == 'uPipe' &&!p.passed){
 				p.passed = true;
 				this.score += 1;
 				this.currentscore.innerHTML = this.score;
@@ -99,6 +99,7 @@ window.Pipes = (function(el, game) {
 			if (p.x < -WIDTH) {
 				this._pipes.splice(i, 1);
 				this.div.removeChild(p.el);
+				i--;
 			}
 		}
 	};
