@@ -9,8 +9,12 @@ window.Sounds = (function() {
 
         this.s_song = new Audio('../sounds/Song.wav');
         this.sounds.push(this.s_song);
-        this.s_jump = new Audio('../sounds/JumpSound.wav');
-        this.sounds.push(this.s_jump);
+        this.s_grunt1 = new Audio('../sounds/grunts/Grunt1.wav');
+        this.sounds.push(this.s_grunt1);
+        this.s_grunt2 = new Audio('../sounds/grunts/Grunt2.wav');
+        this.sounds.push(this.s_grunt2);
+        this.s_grunt3 = new Audio('../sounds/grunts/Grunt3.wav');
+        this.sounds.push(this.s_grunt3);
         this.b_annoying = new Audio('../sounds/dukNukem/annoying.wav');
         this.sounds.push(this.b_annoying);
         this.g_bitchin = new Audio('../sounds/dukNukem/bitchin.wav');
@@ -36,9 +40,7 @@ window.Sounds = (function() {
         this.b_wasted = new Audio('../sounds/dukNukem/wasted.wav');
         this.sounds.push(this.b_wasted);
 
-        this.div = document.getElementsByClassName('Mute');
-        this.s_jump.volume = 0.05;
-
+        this.s_song.volume = 0.2;
         this.mutebtn = document.getElementsByClassName('Mute')[0];
     };
 
@@ -56,7 +58,23 @@ window.Sounds = (function() {
     }
 
     Sounds.prototype.jumpSound = function() {
-        this.s_jump.play();
+        var number = Math.floor(Math.random() * 3) + 1;
+        var sound;
+        switch(number){
+            case 1: 
+                sound = this.s_grunt1
+            break;
+            case 2:
+                sound = this.s_grunt2;
+            break;
+            case 3:
+                sound = this.s_grunt3;
+            break;
+            default:
+                sound = this.s_grunt1;
+        }  
+        sound.volume = 0.5;
+        sound.play();
     };
 
     Sounds.prototype.muteAll = function() {
@@ -76,7 +94,6 @@ window.Sounds = (function() {
     Sounds.prototype.goodSounds = function() {// Completed sounds
        var number = Math.floor(Math.random() * 5) + 1;
        var sound;
-       console.log(number);
        switch(number){
            case 1: 
             sound = this.g_bitchin
@@ -96,14 +113,13 @@ window.Sounds = (function() {
            default:
            sound = this.g_hail;
        }  
-       sound.volume = 0.5;
+       sound.volume = 0.3;
        sound.play();
     } 
 
     Sounds.prototype.damnCrashSound = function() { // Crash sounds
        var number = Math.floor(Math.random() * 6) + 1;
        var sound;
-       console.log(number);
        switch(number){
            case 1: 
             sound = this.b_annoying;
@@ -125,7 +141,7 @@ window.Sounds = (function() {
            default:
            sound = this.b_wasted;
        }  
-       sound.volume = 0.5;
+       sound.volume = 0.3;
        sound.play();
     } 
     // Export singleton.
