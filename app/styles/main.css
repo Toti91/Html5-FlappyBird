@@ -95,6 +95,7 @@ button:focus {
 	background-size: contain;
 	animation: groundScroll 5s linear infinite;
 	z-index: 11;
+	border-top: 0.2em solid black;
 }
 
 @keyframes groundScroll {

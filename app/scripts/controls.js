@@ -3,14 +3,6 @@ window.Controls = (function() {
     'use strict';
 
     /**
-     * Key codes we're interested in.
-     */
-    var KEYS = {
-        32: 'space',
-        38: 'up',
-    };
-
-    /**
      * A singleton class which abstracts all player input,
      * should hide complexity of dealing with keyboard, mouse
      * and touch devices.
@@ -18,38 +10,12 @@ window.Controls = (function() {
      */
     var Controls = function() {
         this._didJump = false;
-        this.flag = false;
-        this.keys = {};
         $(window).on('click', this._onClick.bind(this));
     };
 
     Controls.prototype._onClick = function (e) {
         this._didJump = true;
     }
-
-    Controls.prototype._onKeyDown = function(e) {
-        // Only jump if space wasn't pressed.
-        if (e.keyCode === 32 && !this.keys.space) {
-            this._didJump = true;
-        }
-
-        // Remember that this button is down.
-        if (e.keyCode in KEYS && !this.flag) {
-            this.flag = true;
-            var keyName = KEYS[e.keyCode];
-            this.keys[keyName] = true;
-            return false;
-        }
-    };
-
-    Controls.prototype._onKeyUp = function(e) {
-        if (e.keyCode in KEYS) {
-            this.flag = false;
-            var keyName = KEYS[e.keyCode];
-            this.keys[keyName] = false;
-            return false;
-        }
-    };
 
     /**
      * Only answers true once until a key is pressed again.
