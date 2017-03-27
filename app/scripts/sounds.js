@@ -36,14 +36,10 @@ window.Sounds = (function() {
         this.b_wasted = new Audio('../sounds/dukNukem/wasted.wav');
         this.sounds.push(this.b_wasted);
 
-        //this.s_crash.volume = 0.2;
         this.div = document.getElementsByClassName('Mute');
-        this.soundOn = document.getElementById('soundOn');
-        this.soundOff = document.getElementById('soundOff');
+        this.s_jump.volume = 0.05;
 
-        //this.s_jump.volume = 0.2;
-
-        this.mutebtn = document.getElementsByClassName('Mute')[0];//Frá tóta
+        this.mutebtn = document.getElementsByClassName('Mute')[0];
     };
 
     Sounds.prototype.song = function() {
@@ -68,73 +64,69 @@ window.Sounds = (function() {
             for(var i = 0; i < this.sounds.length; i++){
                 this.sounds[i].muted = true;
             }
-            this.soundOff.style.display = 'block';
-            this.soundOn.style.display = 'none';
-            //this.mutebtn.innerHTML = "Unmute"; Frá Tóta
+            this.mutebtn.innerHTML = "Unmute"; 
         }
         else{
             for(var i = 0; i < this.sounds.length; i++){
                 this.sounds[i].muted = false;
             }
-            //this.mutebtn.innerHTML = "Mute"; Frá Tóta
-            this.soundOff.style.display = 'none';
-            this.soundOn.style.display = 'block';
+            this.mutebtn.innerHTML = "Mute"; 
         }
     }
     Sounds.prototype.goodSounds = function() {// Completed sounds
        var number = Math.floor(Math.random() * 5) + 1;
-       var song;
+       var sound;
        console.log(number);
        switch(number){
            case 1: 
-            song = this.g_bitchin
+            sound = this.g_bitchin
            break;
            case 2:
-            song= this.g_comeGetSome;
+            sound = this.g_comeGetSome;
            break;
            case 3:
-            song = this.g_good;
+            sound = this.g_good;
            break;
            case 4:
-            song = this.g_hail;
+            sound = this.g_hail;
            break;
            case 5:
-            song = this.name;
+            sound = this.name;
            break;
            default:
-           song = this.g_hail;
+           sound = this.g_hail;
        }  
-       song.volume = 0.5;
-       song.play();
+       sound.volume = 0.5;
+       sound.play();
     } 
 
     Sounds.prototype.damnCrashSound = function() { // Crash sounds
        var number = Math.floor(Math.random() * 6) + 1;
-       var song;
+       var sound;
        console.log(number);
        switch(number){
            case 1: 
-            song = this.b_annoying;
+            sound = this.b_annoying;
            break;
            case 2:
-            song= this.b_damn;
+            sound = this.b_damn;
            break;
            case 3:
-            song = this.b_damnIt;
+            sound = this.b_damnIt;
            break;
            case 4:
-            song = this.b_gottaHurt;
+            sound = this.b_gottaHurt;
            break;
            case 5:
-            song = this.b_pissess;
+            sound = this.b_pissess;
            break;
            case 6:
-            song = this.b_wasted;
+            sound = this.b_wasted;
            default:
-           song = this.b_wasted;
+           sound = this.b_wasted;
        }  
-       song.volume = 0.5;
-       song.play();
+       sound.volume = 0.5;
+       sound.play();
     } 
     // Export singleton.
     return new Sounds();

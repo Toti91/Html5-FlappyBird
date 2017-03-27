@@ -13,7 +13,6 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
-		this.score = new window.Score(this.el.find('.Player'), this.el.find('Pipes'), this);
 		this.isPlaying = false;
 		this.frame = 0;
 

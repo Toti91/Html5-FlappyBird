@@ -76,42 +76,14 @@ button:focus {
 	font-family: 'Comic Sans MS', serif;
 	margin: 0.5em 0.5em;
 	font-size: 1em;
-
+	color:white;
 	padding: 0.3em 0.5em;
 	background: none;
-	
-
-	/*padding: 0.3em 1em;
 	border: 0.2em solid white;
-	background: black;*/
+	background: black;
 	z-index: 300;
-
 	cursor: pointer;
 }
-
-#soundOn{ /*Display sound on text*/
-	padding: 0.5em;
-	display: block;
-	color: darkred;
-	border: 0.2em solid darkred;
-}
-#soundOff{/*Display sound off text*/
-	padding: 0.5em;
-	display: none;
-	color:whitesmoke;
-	border: 0.2em solid whitesmoke;
-}
-
-#soundOn:hover{/*Displaying gray color on hover*/
-	color:grey;
-	border-color:gray;
-}
-#soundOff:hover{/*Displaying gray color on hover*/
-	color:grey;
-	border-color:gray;
-}
-
-
 
 .Ground {
 	position: absolute;
