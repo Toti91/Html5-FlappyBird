@@ -46,8 +46,7 @@ window.Player = (function() {
 
 	Player.prototype.checkCollisionWithBounds = function() {
 		if (this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
-			document.getElementsByClassName('Score')[0].innerHTML = "Score: " + this.game.pipes.score;
-			//Sounds.crashSound();
+			document.getElementsByClassName('Score')[0].innerHTML = 'Score: ' + this.game.pipes.score + '<br> Best: ' + this.game.pipes.best;
 			Sounds.damnCrashSound();
 			return this.game.gameover();
 		}
