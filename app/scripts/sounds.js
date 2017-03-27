@@ -22,8 +22,11 @@ window.Sounds = (function() {
         this.b_pissess = new Audio('../sounds/dukNukem/pisses_me.wav');
         this.b_wasted = new Audio('../sounds/dukNukem/wasted.wav');
 
-        this.s_jump.volume = 0.2;
+        this.s_jump.volume = 0.05;
         this.s_crash.volume = 0.2;
+        this.div = document.getElementsByClassName('Mute');
+        this.soundOn = document.getElementById('soundOn');
+        this.soundOff = document.getElementById('soundOff');
     };
 
     Sounds.prototype.song = function() {
@@ -52,11 +55,20 @@ window.Sounds = (function() {
             this.s_song.muted = true;
             this.s_jump.muted = true;
             this.s_crash.muted = true;
+            
+            this.soundOff.style.display = 'block';
+            this.soundOn.style.display = 'none';
+            console.log("Setting mute on");
         }
         else{
             this.s_song.muted = false;
             this.s_jump.muted = false;
             this.s_crash.muted = false;
+
+            this.soundOff.style.display = 'none';
+            this.soundOn.style.display = 'block';
+            console.log("Removing mute");
+
         }
     }
     Sounds.prototype.goodSounds = function() {//chrasing sounds
@@ -82,7 +94,7 @@ window.Sounds = (function() {
            default:
            song = this.g_hail;
        }  
-       song.volume = 0.2;
+       song.volume = 0.5;
        song.play();
     } 
 
@@ -111,7 +123,7 @@ window.Sounds = (function() {
            default:
            song = this.b_wasted;
        }  
-       song.volume = 0.2;
+       song.volume = 0.5;
        song.play();
     } 
     // Export singleton.

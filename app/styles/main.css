@@ -59,19 +59,50 @@
 	width: 100%;
 	z-index: 50;
 }
-
-.Mute {
+button:active{
+	border:none;
+}
+button{
+	border: none;
+}
+button:focus { 
+	outline: none; 
+}
+.Mute {/*posistion of Mute button*/
 	position: absolute;
+	left:2em;
 	font-family: 'Comic Sans MS', serif;
-	color: white;
 	margin: 0.5em 0.5em;
 	font-size: 1em;
 	padding: 0.3em 0.5em;
-	border: 0.2em solid white;
 	background: none;
 	z-index: 190;
 	cursor: pointer;
 }
+
+#soundOn{ /*Display sound on text*/
+	padding: 0.5em;
+	display: block;
+	color: darkred;
+	border: 0.2em solid darkred;
+}
+#soundOff{/*Display sound off text*/
+	padding: 0.5em;
+	display: none;
+	color:whitesmoke;
+	border: 0.2em solid whitesmoke;
+}
+
+#soundOn:hover{/*Displaying gray color on hover*/
+	color:grey;
+	border-color:gray;
+}
+#soundOff:hover{/*Displaying gray color on hover*/
+	color:grey;
+	border-color:gray;
+}
+
+
 
 .Ground {
 	position: absolute;
