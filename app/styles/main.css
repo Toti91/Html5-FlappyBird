@@ -16,10 +16,12 @@
 .Player-wings {
 	position: absolute;
 	left: 0.25em;
-	top: 2.5em;
-	height: 1.5em;
-	width: 2em; 
-	background: #473211;
+	top: 2em;
+	height: 2em;
+	width: 1.5em; 
+	background-image: url('../images/Ear.png');
+	background-size: 1.5em 2em;
+	border-radius: 15%;
 	z-index: 15;
 	transform-origin: top left;
 	animation: 0.4s flap alternate infinite;
@@ -74,9 +76,16 @@ button:focus {
 	font-family: 'Comic Sans MS', serif;
 	margin: 0.5em 0.5em;
 	font-size: 1em;
-	padding: 0.3em 0.5em;
-	background: none;
-	z-index: 190;
+
+	/*padding: 0.3em 0.5em;*/
+	/*background: none;*/
+	/*z-index: 190;*/
+
+	padding: 0.3em 1em;
+	border: 0.2em solid white;
+	background: black;
+	z-index: 300;
+
 	cursor: pointer;
 }
 
@@ -112,7 +121,7 @@ button:focus {
 	width: 102.4em;
 	background-image: url('../images/Ground.png');
 	background-repeat: repeat-x;
-	background-size: contain v;
+	background-size: contain;
 	animation: groundScroll 5s linear infinite;
 	z-index: 11;
 }
@@ -136,7 +145,7 @@ button:focus {
 	width: 40em;
 	margin-left: -20em;
 	box-sizing: border-box;
-	background: #6a593e;
+	background: #333333;
 	text-align: center;
 	z-index: 100;
 	border: 0.3em solid black;
@@ -166,7 +175,7 @@ button:focus {
 	font-size: inherit;
 	padding: 0.4em 1.5em;
 	border: 0.2em solid white;
-	background: none;
+	background: black;
 	cursor: pointer;
 }
 
@@ -197,7 +206,7 @@ body {
 	margin-left: -51.2em;
 	margin-top: -28.8em;
 	overflow: hidden;
-	background: #7ec0ee;
+	background: #304860;
 	background-image: url('../images/City.png');
 	background-repeat: repeat-x;
 	background-size: 45em 16em;

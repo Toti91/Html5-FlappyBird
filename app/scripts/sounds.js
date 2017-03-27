@@ -24,9 +24,11 @@ window.Sounds = (function() {
 
         this.s_jump.volume = 0.05;
         this.s_crash.volume = 0.2;
-        this.div = document.getElementsByClassName('Mute');
-        this.soundOn = document.getElementById('soundOn');
-        this.soundOff = document.getElementById('soundOff');
+  //      this.div = document.getElementsByClassName('Mute');
+ //       this.soundOn = document.getElementById('soundOn');
+//        this.soundOff = document.getElementById('soundOff');
+
+        this.mutebtn = document.getElementsByClassName('Mute')[0];//Frá tóta
     };
 
     Sounds.prototype.song = function() {
@@ -55,20 +57,19 @@ window.Sounds = (function() {
             this.s_song.muted = true;
             this.s_jump.muted = true;
             this.s_crash.muted = true;
-            
-            this.soundOff.style.display = 'block';
-            this.soundOn.style.display = 'none';
-            console.log("Setting mute on");
+            //this.soundOff.style.display = 'block';
+            //this.soundOn.style.display = 'none';
+            //console.log("Setting mute on");
+            this.mutebtn.innerHTML = "Unmute";//Frá tóta
         }
         else{
             this.s_song.muted = false;
             this.s_jump.muted = false;
             this.s_crash.muted = false;
-
-            this.soundOff.style.display = 'none';
-            this.soundOn.style.display = 'block';
-            console.log("Removing mute");
-
+            //this.soundOff.style.display = 'none';
+            //this.soundOn.style.display = 'block';
+            //console.log("Removing mute");
+            this.mutebtn.innerHTML = "Mute";//Frá Tóta
         }
     }
     Sounds.prototype.goodSounds = function() {//chrasing sounds
