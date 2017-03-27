@@ -33,10 +33,10 @@ window.Player = (function() {
 		if (Controls._didJump) {
 			Controls.didJump();
 			Sounds.jumpSound();
-			GRAVITY = -0.45;
+			GRAVITY = -0.55;
 		}
 
-		GRAVITY -= ((Math.random() * -10) - 5) / 500;
+		GRAVITY -= ((Math.random() * -10) - 5) / 400;
 		this.pos.y += GRAVITY;
 		this.checkCollisionWithBounds();
 

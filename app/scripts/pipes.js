@@ -5,7 +5,7 @@ window.Pipes = (function(el, game) {
 
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
-	var SPEED = 25; // * 10 pixels per second
+	var SPEED = 20; // * 10 pixels per second
 	var WIDTH = 10;
 	var HEIGHT = 5;
 	var GAP = -12;
