@@ -24,6 +24,8 @@ window.Sounds = (function() {
 
         this.s_jump.volume = 0.2;
         this.s_crash.volume = 0.2;
+
+        this.mutebtn = document.getElementsByClassName('Mute')[0];
     };
 
     Sounds.prototype.song = function() {
@@ -52,11 +54,13 @@ window.Sounds = (function() {
             this.s_song.muted = true;
             this.s_jump.muted = true;
             this.s_crash.muted = true;
+            this.mutebtn.innerHTML = "Unmute";
         }
         else{
             this.s_song.muted = false;
             this.s_jump.muted = false;
             this.s_crash.muted = false;
+            this.mutebtn.innerHTML = "Mute";
         }
     }
     Sounds.prototype.goodSounds = function() {//chrasing sounds
